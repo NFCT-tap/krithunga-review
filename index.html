@@ -61,46 +61,46 @@
         <h3>Please Review us on Google based on your location</h3>
        
         <div class="locality-item">
-            <button class="locality-button" onclick="redirectToFormToReview('https://forms.gle/rmgz4rNH9aXEu4hR9', 'https://search.google.com/local/writereview?placeid=ChIJ6QAT4BaTyzsR1qGWNCfrhfQ')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJ6QAT4BaTyzsR1qGWNCfrhfQ')">
                 Financial District, Hyderabad
             </button>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="redirectToFormToReview('https://forms.gle/rmgz4rNH9aXEu4hR9', 'https://search.google.com/local/writereview?placeid=ChIJl87S0zuRyzsRA5jvpFGuAiY')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJl87S0zuRyzsRA5jvpFGuAiY')">
                 Madhapur, Hyderabad
             </button>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="redirectToFormToReview('https://forms.gle/rmgz4rNH9aXEu4hR9', 'https://search.google.com/local/writereview?placeid=ChIJH5iGyoyTyzsR6yumqwFekIM')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJH5iGyoyTyzsR6yumqwFekIM')">
                 Aparna Mall, Hyderabad
             </button>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="redirectToFormToReview('https://forms.gle/rmgz4rNH9aXEu4hR9', 'https://search.google.com/local/writereview?placeid=ChIJASMavTn7NToREer-7IGpXdc')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJASMavTn7NToREer-7IGpXdc')">
                 Christurajupuram, Vijayawada
             </button>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="redirectToFormToReview('https://forms.gle/rmgz4rNH9aXEu4hR9', 'https://search.google.com/local/writereview?placeid=ChIJC-vhuiASrjsRYSLu61SYfQg')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJC-vhuiASrjsRYSLu61SYfQg')">
                 Whitefield, Bengaluru
             </button>
         </div>
     </div>
 
     <script>
-        function redirectToFormToReview(formUrl, reviewUrl) {
+        function redirectToForm(formUrl, reviewUrl) {
             // Open the Google Form in a new tab
             const formWindow = window.open(formUrl, '_blank');
 
             if (formWindow) {
-                // Redirect the current tab to the review page after a delay
+                // Wait for a short delay, then redirect the current tab to the review page
                 setTimeout(() => {
                     window.location.href = reviewUrl;
-                }, 2000); // 2-second delay before redirecting
+                }, 2000); // Adjust delay as needed
             } else {
                 alert('Please allow pop-ups to complete the process.');
             }
