@@ -27,12 +27,13 @@
 
         .locality-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 10px;
         }
 
         .locality-button {
-            background-color: #b22222; /* Dark red, like spicy biryani */
+            background-color: #b22222;
             color: #fff;
             padding: 12px 18px;
             border-radius: 25px;
@@ -48,7 +49,7 @@
         }
 
         .locality-button:hover {
-            background-color: #e74c3c; /* Lighter red on hover */
+            background-color: #e74c3c;
             transform: scale(1.05);
         }
 
@@ -57,6 +58,13 @@
             height: 24px;
         }
 
+        iframe {
+            border: none;
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -65,59 +73,63 @@
         <h3>Please Review us on Google based on your location</h3>
        
         <div class="locality-item">
-            <a href="https://search.google.com/local/writereview?placeid=ChIJ6QAT4BaTyzsR1qGWNCfrhfQ" class="locality-button" target="_blank">
+            <button class="locality-button" onclick="openGoogleForm('https://search.google.com/local/writereview?placeid=ChIJ6QAT4BaTyzsR1qGWNCfrhfQ')">
                 Financial District, Hyderabad
-            </a>
-            <span class="map-icon">
-                <a href="https://maps.google.com/maps?cid=17619747670775472598" target="_blank">
-                    <img src="assets/logo.png" alt="Map Icon">
-                </a>
-            </span>
+            </button>
+            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-financial" class="form-frame"></iframe>
         </div>
 
         <div class="locality-item">
-            <a href="https://search.google.com/local/writereview?placeid=ChIJl87S0zuRyzsRA5jvpFGuAiY" class="locality-button" target="_blank">
+            <button class="locality-button" onclick="openGoogleForm('https://search.google.com/local/writereview?placeid=ChIJl87S0zuRyzsRA5jvpFGuAiY')">
                 Madhapur, Hyderabad
-            </a>
-            <span class="map-icon">
-                <a href="https://maps.google.com/maps?cid=2738943189077432323" target="_blank">
-                    <img src="assets/logo.png" alt="Map Icon">
-                </a>
-            </span>
-        </div>
-        <div class="locality-item">
-            <a href="https://search.google.com/local/writereview?placeid=ChIJH5iGyoyTyzsR6yumqwFekIM" class="locality-button" target="_blank">
-                Aparna Mall, Hyderabad
-            </a>
-            <span class="map-icon">
-                <a href="https://maps.google.com/maps?cid=9480180576882666475" target="_blank">
-                    <img src="assets/logo.png" alt="Map Icon">
-                </a>
-            </span>
+            </button>
+            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-madhapur" class="form-frame"></iframe>
         </div>
 
-         <div class="locality-item">
-            <a href="https://search.google.com/local/writereview?placeid=ChIJASMavTn7NToREer-7IGpXdc" class="locality-button" target="_blank">
+        <div class="locality-item">
+            <button class="locality-button" onclick="openGoogleForm('https://search.google.com/local/writereview?placeid=ChIJH5iGyoyTyzsR6yumqwFekIM')">
+                Aparna Mall, Hyderabad
+            </button>
+            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-aparna" class="form-frame"></iframe>
+        </div>
+
+        <div class="locality-item">
+            <button class="locality-button" onclick="openGoogleForm('https://search.google.com/local/writereview?placeid=ChIJASMavTn7NToREer-7IGpXdc')">
                 Christurajupuram, Vijayawada
-            </a>
-            <span class="map-icon">
-                <a href="https://maps.google.com/maps?cid=15518746266480601617" target="_blank">
-                    <img src="assets/logo.png" alt="Map Icon">
-                </a>
-            </span>
+            </button>
+            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-christurajupuram" class="form-frame"></iframe>
         </div>
-              <div class="locality-item">
-            <a href="https://search.google.com/local/writereview?placeid=ChIJC-vhuiASrjsRYSLu61SYfQg" class="locality-button" target="_blank">
-                WhiteField, Bengaluru
-            </a>
-            <span class="map-icon">
-                <a href="https://www.google.com/maps/place/Kritunga+Restaurant/data=!4m7!3m6!1s0x3bae1220bae1eb0b:0x87d9854ebee2261!8m2!3d12.9758537!4d77.7269886!16s%2Fg%2F11byxgfrk9!19sChIJC-vhuiASrjsRYSLu61SYfQg?authuser=0&hl=en&rclk=1" target="_blank">
-                    <img src="assets/logo.png" alt="Map Icon">
-                </a>
-            </span>
+
+        <div class="locality-item">
+            <button class="locality-button" onclick="openGoogleForm('https://search.google.com/local/writereview?placeid=ChIJC-vhuiASrjsRYSLu61SYfQg')">
+                Whitefield, Bengaluru
+            </button>
+            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-whitefield" class="form-frame"></iframe>
         </div>
-        <br>
     </div>
 
+    <script>
+        function openGoogleForm(redirectUrl) {
+            // Hide all iframes
+            document.querySelectorAll('.form-frame').forEach(frame => frame.style.display = 'none');
+
+            // Show the Google Form
+            const formId = `form-${redirectUrl.split('placeid=')[1]}`;
+            const formFrame = document.getElementById(formId);
+            if (formFrame) {
+                formFrame.style.display = 'block';
+
+                // Add listener for form submission
+                formFrame.onload = function () {
+                    const googleReviewRedirect = () => {
+                        window.location.href = redirectUrl;
+                    };
+
+                    // Assuming the form contains a submit button
+                    setTimeout(googleReviewRedirect, 500);
+                };
+            }
+        }
+    </script>
 </body>
 </html>
