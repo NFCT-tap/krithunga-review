@@ -53,19 +53,6 @@
             background-color: #e74c3c;
             transform: scale(1.05);
         }
-
-        .map-icon img {
-            width: 24px;
-            height: 24px;
-        }
-
-        iframe {
-            border: none;
-            width: 100%;
-            max-width: 500px;
-            height: 500px;
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -74,86 +61,45 @@
         <h3>Please Review us on Google based on your location</h3>
        
         <div class="locality-item">
-            <button class="locality-button" onclick="showGoogleForm('form-financial')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJ6QAT4BaTyzsR1qGWNCfrhfQ')">
                 Financial District, Hyderabad
             </button>
-            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-financial" class="form-frame"></iframe>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="showGoogleForm('form-madhapur')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJl87S0zuRyzsRA5jvpFGuAiY')">
                 Madhapur, Hyderabad
             </button>
-            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-madhapur" class="form-frame"></iframe>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="showGoogleForm('form-aparna')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJH5iGyoyTyzsR6yumqwFekIM')">
                 Aparna Mall, Hyderabad
             </button>
-            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-aparna" class="form-frame"></iframe>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="showGoogleForm('form-christurajupuram')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJASMavTn7NToREer-7IGpXdc')">
                 Christurajupuram, Vijayawada
             </button>
-            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-christurajupuram" class="form-frame"></iframe>
         </div>
 
         <div class="locality-item">
-            <button class="locality-button" onclick="showGoogleForm('form-whitefield')">
+            <button class="locality-button" onclick="redirectToForm('https://forms.gle/RfX72qRBBND1uoHw6', 'https://search.google.com/local/writereview?placeid=ChIJC-vhuiASrjsRYSLu61SYfQg')">
                 Whitefield, Bengaluru
             </button>
-            <iframe src="https://forms.gle/RfX72qRBBND1uoHw6" id="form-whitefield" class="form-frame"></iframe>
         </div>
     </div>
 
     <script>
-        function showGoogleForm(formId) {
-            // Hide all forms
-            document.querySelectorAll('.form-frame').forEach(frame => {
-                frame.style.display = 'none';
-            });
+        function redirectToForm(formUrl, reviewUrl) {
+            // Open the Google Form in a new tab
+            window.open(formUrl, '_blank');
 
-            // Show the selected form
-            const selectedForm = document.getElementById(formId);
-            if (selectedForm) {
-                selectedForm.style.display = 'block';
-
-                // Redirect after form submission
-                selectedForm.onload = function () {
-                    const redirectToReview = () => {
-                        let redirectUrl = '';
-                        switch (formId) {
-                            case 'form-financial':
-                                redirectUrl = 'https://search.google.com/local/writereview?placeid=ChIJ6QAT4BaTyzsR1qGWNCfrhfQ';
-                                break;
-                            case 'form-madhapur':
-                                redirectUrl = 'https://search.google.com/local/writereview?placeid=ChIJl87S0zuRyzsRA5jvpFGuAiY';
-                                break;
-                            case 'form-aparna':
-                                redirectUrl = 'https://search.google.com/local/writereview?placeid=ChIJH5iGyoyTyzsR6yumqwFekIM';
-                                break;
-                            case 'form-christurajupuram':
-                                redirectUrl = 'https://search.google.com/local/writereview?placeid=ChIJASMavTn7NToREer-7IGpXdc';
-                                break;
-                            case 'form-whitefield':
-                                redirectUrl = 'https://search.google.com/local/writereview?placeid=ChIJC-vhuiASrjsRYSLu61SYfQg';
-                                break;
-                        }
-
-                        if (redirectUrl) {
-                            setTimeout(() => {
-                                window.location.href = redirectUrl;
-                            }, 2000); // 2-second delay after form submission
-                        }
-                    };
-
-                    // Attach the redirection logic
-                    redirectToReview();
-                };
-            }
+            // Redirect to the review page after a delay
+            setTimeout(() => {
+                window.location.href = reviewUrl;
+            }, 1000); // Adjust delay if needed
         }
     </script>
 </body>
